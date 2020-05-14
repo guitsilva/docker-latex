@@ -15,10 +15,6 @@ ARG UPGRADE_PACKAGES="true"
 ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/common-debian.sh"
 ARG COMMON_SCRIPT_SHA="dev-mode"
 
-# Create VSCode extensions folder
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-    && chown -R $USERNAME /home/$USERNAME/.vscode-server
-
 # Install packages
 RUN apt-get update \
     # Verify git, common tools / libs installed, add/modify non-root user, optionally install zsh
@@ -46,3 +42,7 @@ RUN apt-get update \
     latexmk \
     # Remove trash
     && rm -rf /var/lib/apt/lists/*
+
+# Create VSCode extensions folder
+RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
+    && chown -R $USERNAME /home/$USERNAME/.vscode-server
