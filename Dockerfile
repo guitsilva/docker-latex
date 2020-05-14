@@ -15,10 +15,6 @@ ARG UPGRADE_PACKAGES="true"
 ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/common-debian.sh"
 ARG COMMON_SCRIPT_SHA="dev-mode"
 
-# Add non-root user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
-
 # Create VSCode extensions folder
 RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
     && chown -R $USERNAME /home/$USERNAME/.vscode-server
