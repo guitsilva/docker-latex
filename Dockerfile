@@ -36,9 +36,6 @@ RUN apt-get update \
     texlive-lang-portuguese \
     # Utilities
     cm-super \
-    git \
-    gnupg \
-    openssh-client \
     latexmk \
     # Remove trash
     && rm -rf /var/lib/apt/lists/*
