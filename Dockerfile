@@ -12,8 +12,8 @@ ARG USER_GID=$USER_UID
 # Setup Script options
 ARG INSTALL_ZSH="true"
 ARG UPGRADE_PACKAGES="false"
-ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/common-debian.sh"
-ARG COMMON_SCRIPT_SHA="dev-mode"
+ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/common-setup.sh"
+ARG COMMON_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
 
 # Install packages
 RUN apt-get update \
