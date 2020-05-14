@@ -37,7 +37,9 @@ RUN apt-get update \
     # Utilities
     cm-super \
     latexmk \
-    # Remove trash
+    # Clean up
+    && apt-get autoremove -y \
+    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Create VSCode extensions folder
