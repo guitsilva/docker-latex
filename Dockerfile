@@ -12,18 +12,18 @@ ARG USER_GID=$USER_UID
 # Setup Script options
 ARG INSTALL_ZSH="true"
 ARG UPGRADE_PACKAGES="false"
-ARG COMMON_SCRIPT_SOURCE="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/common-setup.sh"
-ARG COMMON_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
+ARG SETUP_SCRIPT_SOURCE="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/setup.sh"
+ARG SETUP_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
 
 # Install packages
 RUN apt-get update \
     # Download and execute Setup Script: install useful packages, generate locales,
     # add non-root user and optionally install oh-my-zsh 
     && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
-    && curl -sSL  ${COMMON_SCRIPT_SOURCE} -o /tmp/common-setup.sh \
-    && ([ "${COMMON_SCRIPT_SHA}" = "dev-mode" ] || (echo "${COMMON_SCRIPT_SHA} /tmp/common-setup.sh" | sha256sum -c -)) \
-    && /bin/bash /tmp/common-setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
-    && rm /tmp/common-setup.sh \
+    && curl -sSL  ${SETUP_SCRIPT_SOURCE} -o /tmp/setup.sh \
+    && ([ "${SETUP_SCRIPT_SHA}" = "dev-mode" ] || (echo "${SETUP_SCRIPT_SHA} /tmp/setup.sh" | sha256sum -c -)) \
+    && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
+    && rm /tmp/setup.sh \
     #
     # Install selected TeX Live packages and utilities
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
