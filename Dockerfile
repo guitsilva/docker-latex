@@ -9,18 +9,24 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-# Add non-root user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
-
-# Create VSCode extensions folder
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-    && chown -R $USERNAME /home/$USERNAME/.vscode-server
+# Setup Script options
+ARG INSTALL_ZSH="true"
+ARG UPGRADE_PACKAGES="false"
+ARG SETUP_SCRIPT_SOURCE="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/setup.sh"
+ARG SETUP_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
 
 # Install packages
 RUN apt-get update \
+    # Download and execute Setup Script: install useful packages, generate locales,
+    # add non-root user and optionally install oh-my-zsh 
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
+    && curl -sSL  ${SETUP_SCRIPT_SOURCE} -o /tmp/setup.sh \
+    && ([ "${SETUP_SCRIPT_SHA}" = "dev-mode" ] || (echo "${SETUP_SCRIPT_SHA} /tmp/setup.sh" | sha256sum -c -)) \
+    && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
+    && rm /tmp/setup.sh \
+    #
+    # Install selected TeX Live packages and utilities
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    # TeXLive -- non-full
     texlive \
     texlive-science \
     texlive-publishers \
@@ -29,11 +35,14 @@ RUN apt-get update \
     texlive-latex-extra \
     texlive-lang-english \
     texlive-lang-portuguese \
-    # Utilities
     cm-super \
-    git \
-    gnupg \
-    openssh-client \
     latexmk \
-    # Remove trash
+    #
+    # Clean up
+    && apt-get autoremove -y \
+    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Create VS Code extensions folder for persistent extensions across containers
+RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
+    && chown -R $USERNAME /home/$USERNAME/.vscode-server
