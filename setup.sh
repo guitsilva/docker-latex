@@ -37,12 +37,6 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-# Ensure apt is in non-interactive to avoid prompts
-export DEBIAN_FRONTEND=noninteractive
-
-# Install apt-utils to avoid debconf warning
-apt-get -y install --no-install-recommends apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 )
-
 # Install common dependencies
 apt-get -y install --no-install-recommends \
     git \

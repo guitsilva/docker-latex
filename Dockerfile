@@ -4,6 +4,9 @@ FROM ubuntu
 # Maintainer
 LABEL maintainer="Guilherme Tavares da Silva <guilherme.tsilva@gmail.com>"
 
+# Set noninteractive mode
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Define non-root user 
 ARG USERNAME=vscode
 ARG USER_UID=1000
@@ -18,14 +21,14 @@ ARG SETUP_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1
 RUN apt-get update \
     # Download and execute Setup Script: install useful packages, generate locales,
     # add non-root user and optionally install oh-my-zsh 
-    && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
+    && apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
     && curl -sSL  ${SETUP_SCRIPT_SOURCE} -o /tmp/setup.sh \
     && ([ "${SETUP_SCRIPT_SHA}" = "dev-mode" ] || (echo "${SETUP_SCRIPT_SHA} /tmp/setup.sh" | sha256sum -c -)) \
     && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     && rm /tmp/setup.sh \
     #
     # Install selected TeX Live packages and utilities
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    && apt-get install -y \
     texlive \
     texlive-science \
     texlive-publishers \
