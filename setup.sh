@@ -100,7 +100,7 @@ RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
     && chown -R $USERNAME /home/$USERNAME/.vscode-server
 
 # Optionally install and configure zsh
-if [ "$INSTALL_ZSH" = "true" ]; then 
+if [ "$INSTALL_ZSH" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then 
     apt-get install -y zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "export PATH=\$PATH:\$HOME/.local/bin" >> /root/.zshrc
