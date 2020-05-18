@@ -41,7 +41,3 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
-
-# Create VS Code extensions folder for persistent extensions across containers
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-    && chown -R $USERNAME /home/$USERNAME/.vscode-server

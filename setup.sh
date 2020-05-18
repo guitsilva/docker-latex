@@ -116,6 +116,10 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 echo "export PATH=\$PATH:\$HOME/.local/bin" | tee -a /root/.bashrc >> /home/$USERNAME/.bashrc 
 chown $USER_UID:$USER_GID /home/$USERNAME/.bashrc
 
+# Create VS Code extensions folder for persistent extensions across containers
+RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
+    && chown -R $USERNAME /home/$USERNAME/.vscode-server
+
 # Optionally install and configure zsh
 if [ "$INSTALL_ZSH" = "true" ]; then 
     apt-get install -y zsh
