@@ -78,18 +78,6 @@ locale-gen
 if [[ ! -z $(apt-cache --names-only search ^libssl1.1$) ]]; then
     apt-get -y install  --no-install-recommends libssl1.1
 fi
- 
-# Install appropriate version of libssl1.0.x if available
-LIBSSL=$(dpkg-query -f '${db:Status-Abbrev}\t${binary:Package}\n' -W 'libssl1\.0\.?' 2>&1 || echo '')
-if [ "$(echo "$LIBSSL" | grep -o 'libssl1\.0\.[0-9]:' | uniq | sort | wc -l)" -eq 0 ]; then
-    if [[ ! -z $(apt-cache --names-only search ^libssl1.0.2$) ]]; then
-        # Debian 9
-        apt-get -y install  --no-install-recommends libssl1.0.2
-    elif [[ ! -z $(apt-cache --names-only search ^libssl1.0.0$) ]]; then
-        # Ubuntu 18.04, 16.04, earlier
-        apt-get -y install  --no-install-recommends libssl1.0.0
-    fi
-fi
 
 # Create or update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
 if id -u $USERNAME > /dev/null 2>&1; then
