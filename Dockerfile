@@ -1,39 +1,21 @@
-# Ubuntu LTS
+# Define base image: Ubuntu LTS
 FROM ubuntu
 
-# Maintainer
+# Define maintainer
 LABEL maintainer="Guilherme Tavares da Silva <guilherme.tsilva@gmail.com>"
 
-# Define non-root user 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+# Set noninteractive mode
+ARG DEBIAN_FRONTEND=noninteractive
 
-# Add non-root user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+# Set setup.sh arguments 
+ARG userName=vscode
+ARG userUID=1000
+ARG userGID=$userUID
+ARG installZsh="true"
 
-# Create VSCode extensions folder
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-    && chown -R $USERNAME /home/$USERNAME/.vscode-server
+# Copy local setup.sh to container
+COPY setup.sh /tmp/
 
-# Install packages
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    # TeXLive -- non-full
-    texlive \
-    texlive-science \
-    texlive-publishers \
-    texlive-bibtex-extra \
-    texlive-fonts-extra \
-    texlive-latex-extra \
-    texlive-lang-english \
-    texlive-lang-portuguese \
-    # Utilities
-    cm-super \
-    git \
-    gnupg \
-    openssh-client \
-    latexmk \
-    # Remove trash
-    && rm -rf /var/lib/apt/lists/*
+# Execute and remove setup.sh
+RUN bash /tmp/setup.sh "${userName}" "${userUID}" "${userGID}" "${installZsh}" \
+    && rm /tmp/setup.sh
