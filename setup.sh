@@ -45,6 +45,9 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# Update package lists
+apt-get update
+
 # Install common dependencies
 apt-get -y install --no-install-recommends \
     git \
@@ -129,3 +132,5 @@ if [ "$installZsh" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then
     chown -R $userUID:$userGID /home/$userName/.oh-my-zsh /home/$userName/.zshrc
 fi
 
+# Clean up
+rm -rf /var/lib/apt/lists/*

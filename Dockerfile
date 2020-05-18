@@ -16,10 +16,6 @@ ARG userGID=$userUID
 # Copy local setup.sh to container
 COPY setup.sh /tmp/
 
-# Run build commands
-RUN apt-get update \
-    # Execute setup.sh
-    && bash /tmp/setup.sh "${installZsh}" "${userName}" "${userUID}" "${userGID}" \
-    # Clean up
-    && rm /tmp/setup.sh \
-    && rm -rf /var/lib/apt/lists/*
+# Execute and remove setup.sh
+RUN bash /tmp/setup.sh "${installZsh}" "${userName}" "${userUID}" "${userGID}" \
+    && rm /tmp/setup.sh
