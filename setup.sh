@@ -29,15 +29,15 @@
 # SOFTWARE
 #-------------------------------------------------------------------------------------------------------------
 
-# Syntax: ./setup.sh <install zsh flag> <username> <user UID> <user GID>
+# Syntax: ./setup.sh <install zsh flag> <userName> <user UID> <user GID>
 
 set -e
 
 # Define script options and its defaults
-INSTALL_ZSH=${1:-"true"}
-USERNAME=${2:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
-USER_UID=${3:-1000}
-USER_GID=${4:-1000}
+installZsh=${1:-"true"}
+userName=${2:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
+userUID=${3:-1000}
+userGID=${4:-1000}
 
 # Ensure script execution as root
 if [ "$(id -u)" -ne 0 ]; then
@@ -91,41 +91,41 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # Create or update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
-if id -u $USERNAME > /dev/null 2>&1; then
+if id -u $userName > /dev/null 2>&1; then
     # User exists, update if needed
-    if [ "$USER_GID" != "$(id -G $USERNAME)" ]; then 
-        groupmod --gid $USER_GID $USERNAME 
-        usermod --gid $USER_GID $USERNAME
+    if [ "$userGID" != "$(id -G $userName)" ]; then 
+        groupmod --gid $userGID $userName 
+        usermod --gid $userGID $userName
     fi
-    if [ "$USER_UID" != "$(id -u $USERNAME)" ]; then 
-        usermod --uid $USER_UID $USERNAME
+    if [ "$userUID" != "$(id -u $userName)" ]; then 
+        usermod --uid $userUID $userName
     fi
 else
     # Create user
-    groupadd --gid $USER_GID $USERNAME
-    useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
+    groupadd --gid $userGID $userName
+    useradd -s /bin/bash --uid $userUID --gid $userGID -m $userName
 fi
 
 # Add sudo support for non-root user
-echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
-chmod 0440 /etc/sudoers.d/$USERNAME
+echo $userName ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$userName
+chmod 0440 /etc/sudoers.d/$userName
 
 # Ensure ~/.local/bin is in the PATH for root and non-root users for bash. (zsh is later)
-echo "export PATH=\$PATH:\$HOME/.local/bin" | tee -a /root/.bashrc >> /home/$USERNAME/.bashrc 
-chown $USER_UID:$USER_GID /home/$USERNAME/.bashrc
+echo "export PATH=\$PATH:\$HOME/.local/bin" | tee -a /root/.bashrc >> /home/$userName/.bashrc 
+chown $userUID:$userGID /home/$userName/.bashrc
 
 # Create VS Code extensions folder for persistent extensions across containers
-RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
-    && chown -R $USERNAME /home/$USERNAME/.vscode-server
+RUN mkdir -p /home/$userName/.vscode-server/extensions \
+    && chown -R $userName /home/$userName/.vscode-server
 
 # Optionally install and configure zsh
-if [ "$INSTALL_ZSH" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then 
+if [ "$installZsh" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then 
     apt-get install -y zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     echo "export PATH=\$PATH:\$HOME/.local/bin" >> /root/.zshrc
-    cp -R /root/.oh-my-zsh /home/$USERNAME
-    cp /root/.zshrc /home/$USERNAME
-    sed -i -e "s/\/root\/.oh-my-zsh/\/home\/$USERNAME\/.oh-my-zsh/g" /home/$USERNAME/.zshrc
-    chown -R $USER_UID:$USER_GID /home/$USERNAME/.oh-my-zsh /home/$USERNAME/.zshrc
+    cp -R /root/.oh-my-zsh /home/$userName
+    cp /root/.zshrc /home/$userName
+    sed -i -e "s/\/root\/.oh-my-zsh/\/home\/$userName\/.oh-my-zsh/g" /home/$userName/.zshrc
+    chown -R $userUID:$userGID /home/$userName/.oh-my-zsh /home/$userName/.zshrc
 fi
 
