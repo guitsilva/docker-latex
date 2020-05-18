@@ -15,7 +15,7 @@ ARG userGID=$userUID
 # Set setup.sh script options
 ARG installZsh="true"
 ARG setupScriptSource="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/setup.sh"
-ARG setupScriptSHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
+ARG setupScriptSHA="f81e0e1a27b866f29c50b38496d7d4cdcfb9dc466fdc783fa034bd4861bc55bd"
 
 # Run build commands
 RUN apt-get update \
