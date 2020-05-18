@@ -118,8 +118,8 @@ echo "export PATH=\$PATH:\$HOME/.local/bin" | tee -a /root/.bashrc >> /home/$use
 chown $userUID:$userGID /home/$userName/.bashrc
 
 # Create VS Code extensions folder for persistent extensions across containers
-RUN mkdir -p /home/$userName/.vscode-server/extensions \
-    && chown -R $userName /home/$userName/.vscode-server
+mkdir -p /home/$userName/.vscode-server/extensions
+chown -R $userName /home/$userName/.vscode-server
 
 # Optionally install and configure zsh
 if [ "$installZsh" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then 
