@@ -11,7 +11,6 @@ ARG USER_GID=$USER_UID
 
 # Setup Script options
 ARG INSTALL_ZSH="true"
-ARG UPGRADE_PACKAGES="false"
 ARG SETUP_SCRIPT_SOURCE="https://raw.githubusercontent.com/guitsilva/docker-latex/develop/setup.sh"
 ARG SETUP_SCRIPT_SHA="61502b0fd358705763ba5038bcda72392d06b11d94838b071937d59be1e2b00e"
 
@@ -22,7 +21,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
     && curl -sSL  ${SETUP_SCRIPT_SOURCE} -o /tmp/setup.sh \
     && ([ "${SETUP_SCRIPT_SHA}" = "dev-mode" ] || (echo "${SETUP_SCRIPT_SHA} /tmp/setup.sh" | sha256sum -c -)) \
-    && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
+    && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     && rm /tmp/setup.sh \
     #
     # Install selected TeX Live packages and utilities

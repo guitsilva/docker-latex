@@ -31,7 +31,6 @@ INSTALL_ZSH=${1:-"true"}
 USERNAME=${2:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
 USER_UID=${3:-1000}
 USER_GID=${4:-1000}
-UPGRADE_PACKAGES=${5:-true}
 
 if [ "$(id -u)" -ne 0 ]; then
     echo 'Script must be run a root. Use sudo or set "USER root" before running the script.'
@@ -43,11 +42,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install apt-utils to avoid debconf warning
 apt-get -y install --no-install-recommends apt-utils 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 )
-
-# Get to latest versions of all packages
-if [ "${UPGRADE_PACKAGES}" = "true" ]; then
-    apt-get -y upgrade --no-install-recommends
-fi
 
 # Install common dependencies
 apt-get -y install --no-install-recommends \
