@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------------------------------------
+# Modified version of the file
+#
+# https://github.com/microsoft/vscode-dev-containers/blob/master/script-library/common-debian.sh
+#
+# licensed under the MIT License below.
+#-------------------------------------------------------------------------------------------------------------
 # MIT License
 #
 # Copyright (c) Microsoft Corporation. All rights reserved.
@@ -23,7 +29,7 @@
 # SOFTWARE
 #-------------------------------------------------------------------------------------------------------------
 
-# Syntax: ./common-setup.sh <install zsh flag> <username> <user UID> <user GID>
+# Syntax: ./setup.sh <install zsh flag> <username> <user UID> <user GID>
 
 set -e
 
