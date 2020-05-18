@@ -62,17 +62,14 @@ apt-get -y install --no-install-recommends \
     libicu[0-9][0-9] \
     liblttng-ust0 \
     libstdc++6 \
+    libssl1.1 \
+    sudo \
     zlib1g \
     locales
 
 # Ensure at least the en_US.UTF-8 UTF-8 locale is available.
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
 locale-gen
-
-# Install libssl1.1 if available
-if [[ ! -z $(apt-cache --names-only search ^libssl1.1$) ]]; then
-    apt-get -y install  --no-install-recommends libssl1.1
-fi
 
 # Create or update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
 if id -u $USERNAME > /dev/null 2>&1; then
@@ -91,7 +88,6 @@ else
 fi
 
 # Add sudo support for non-root user
-apt-get install -y sudo
 echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 chmod 0440 /etc/sudoers.d/$USERNAME
 
