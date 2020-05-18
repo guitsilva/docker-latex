@@ -29,7 +29,7 @@
 # SOFTWARE
 #-------------------------------------------------------------------------------------------------------------
 
-# Syntax: ./setup.sh <install zsh flag> <userName> <user UID> <user GID>
+# Syntax: ./setup.sh <userName> <user UID> <user GID> <install zsh flag> 
 
 set -e
 
