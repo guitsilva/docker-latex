@@ -2,6 +2,7 @@
 
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/guitsilva/docker-latex)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/guitsilva/docker-latex)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/guitsilva/docker-latex)
 
 LaTeX environment within Docker containers based on Ubuntu LTS and non-full TeX Live. This environment is used by this repository owner to build his academic LaTeX projects: papers, posters, presentations, theses, etc. Therefore, the Docker image is way smaller than `texlive-full` ones and rather personal.
 
