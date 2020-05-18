@@ -34,10 +34,10 @@
 set -e
 
 # Define script options and its defaults
-installZsh=${1:-"true"}
-userName=${2:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
-userUID=${3:-1000}
-userGID=${4:-1000}
+userName=${1:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
+userUID=${2:-1000}
+userGID=${3:-1000}
+installZsh=${4:-"false"}
 
 # Ensure script execution as root
 if [ "$(id -u)" -ne 0 ]; then
