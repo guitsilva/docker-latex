@@ -67,6 +67,19 @@ apt-get -y install --no-install-recommends \
     zlib1g \
     locales
 
+# Install selected TeX Live packages and utilities
+apt-get install -y \
+    texlive \
+    texlive-science \
+    texlive-publishers \
+    texlive-bibtex-extra \
+    texlive-fonts-extra \
+    texlive-latex-extra \
+    texlive-lang-english \
+    texlive-lang-portuguese \
+    cm-super \
+    latexmk
+
 # Ensure at least the en_US.UTF-8 UTF-8 locale is available.
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
 locale-gen

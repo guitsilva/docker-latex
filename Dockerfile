@@ -27,19 +27,6 @@ RUN apt-get update \
     && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     && rm /tmp/setup.sh \
     #
-    # Install selected TeX Live packages and utilities
-    && apt-get install -y \
-    texlive \
-    texlive-science \
-    texlive-publishers \
-    texlive-bibtex-extra \
-    texlive-fonts-extra \
-    texlive-latex-extra \
-    texlive-lang-english \
-    texlive-lang-portuguese \
-    cm-super \
-    latexmk \
-    #
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
