@@ -27,11 +27,13 @@
 
 set -e
 
+# Define script options and its defaults
 INSTALL_ZSH=${1:-"true"}
 USERNAME=${2:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
 USER_UID=${3:-1000}
 USER_GID=${4:-1000}
 
+# Ensure script execution as root
 if [ "$(id -u)" -ne 0 ]; then
     echo 'Script must be run a root. Use sudo or set "USER root" before running the script.'
     exit 1
@@ -64,7 +66,6 @@ apt-get -y install --no-install-recommends \
     locales
 
 # Ensure at least the en_US.UTF-8 UTF-8 locale is available.
-# Common need for both applications and things like the agnoster ZSH theme.
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
 locale-gen
 
@@ -89,7 +90,7 @@ else
     useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 fi
 
-# Add add sudo support for non-root user
+# Add sudo support for non-root user
 apt-get install -y sudo
 echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 chmod 0440 /etc/sudoers.d/$USERNAME
