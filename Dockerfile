@@ -19,7 +19,7 @@ COPY setup.sh /tmp/
 # Run build commands
 RUN apt-get update \
     # Execute setup.sh
-    && /bin/bash /tmp/setup.sh "${installZsh}" "${userName}" "${userUID}" "${userGID}" \
+    && bash /tmp/setup.sh "${installZsh}" "${userName}" "${userUID}" "${userGID}" \
     # Clean up
     && rm /tmp/setup.sh \
     && rm -rf /var/lib/apt/lists/*
