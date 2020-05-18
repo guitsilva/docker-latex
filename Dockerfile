@@ -23,7 +23,7 @@ RUN apt-get update \
     && apt-get -y install --no-install-recommends curl ca-certificates 2>&1 \
     && curl -sSL  ${setupScriptSource} -o /tmp/setup.sh \
     # Check setup.sh SHA
-    && ([ "${setupScriptSHA}" = "dev-mode" ] || (echo "${setupScriptSHA} /tmp/setup.sh" | sha256sum -c -)) \
+    && (echo "${setupScriptSHA} /tmp/setup.sh" | sha256sum -c -) \
     # Execute setup.sh
     && /bin/bash /tmp/setup.sh "${installZsh}" "${userName}" "${userUID}" "${userGID}" \
     # Clean up
