@@ -28,6 +28,4 @@ RUN apt-get update \
     && /bin/bash /tmp/setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" \
     # Clean up
     && rm /tmp/setup.sh \
-    && apt-get autoremove -y \
-    && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
