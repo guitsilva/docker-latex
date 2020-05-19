@@ -1,0 +1,38 @@
+{
+	"name": "LaTeX",
+
+	"dockerFile": "Dockerfile",
+
+	"remoteUser": "vscode",
+
+	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/home/vscode/${localWorkspaceFolderBasename}",
+	
+	"workspaceFolder": "/home/vscode/${localWorkspaceFolderBasename}",
+
+	"mounts": [
+		"type=volume,source=vsc-latex-extensions,target=/home/vscode/.vscode-server/extensions"
+	],
+
+	"extensions": [
+		"streetsidesoftware.code-spell-checker",
+		"james-yu.latex-workshop",
+		"stkb.rewrap",
+		"mhutchie.git-graph",
+		"github.vscode-pull-request-github"
+	],
+
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/zsh",
+
+		"files.exclude": {
+			"*.aux": true,
+			"**.bbl": true,
+			"**.blg": true,
+			"**.fdb_latexmk": true,
+			"**.fls": true,
+			"**.log": true,
+			"**.out": true,
+			"**.synctex.gz": true
+		}
+	},
+}
