@@ -20,6 +20,12 @@ Built images can be found at [DockerHub](https://hub.docker.com/r/guitsilva/dock
 
     ~$ docker pull guitsilva/docker-latex
 
+Visual Studio Code users, a `devcontainer.json` file is included. In order to use it and enable all the cool features listed above, install the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, copy the `devcontainer.json` file into your LaTeX project folder
+
+    ~$ curl -OJ https://raw.githubusercontent.com/guitsilva/docker-latex/master/.devcontainer.json
+
+and execute VS Code's command `Remote-Containers: Reopen in Container`.
+
 ## Versioning
 
 We use [SemVer](semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/guitsilva/docker-latex/tags).
