@@ -73,8 +73,9 @@ apt-get install -y \
     cm-super \
     latexmk
 
-# Ensure at least the en_US.UTF-8 UTF-8 locale is available.
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen 
+# Generate en_US.UTF-8 and pt_BR.UTF-8 locales
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # Create or update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
