@@ -48,33 +48,17 @@ fi
 # Update package lists
 apt-get update
 
-# Install common dependencies
+# Install general utilities
 apt-get -y install --no-install-recommends \
-    git \
-    openssh-client \
-    less \
-    iproute2 \
-    procps \
-    curl \
-    wget \
-    unzip \
-    nano \
-    jq \
-    lsb-release \
     ca-certificates \
-    apt-transport-https \
-    dialog \
+    curl \
+    git \
     gnupg \
-    libc6 \
-    libgcc1 \
-    libgssapi-krb5-2 \
-    libicu[0-9][0-9] \
-    liblttng-ust0 \
-    libstdc++6 \
-    libssl1.1 \
-    sudo \
-    zlib1g \
-    locales
+    less \
+    locales \
+    neovim \
+    openssh-client \
+    sudo
 
 # Install selected TeX Live packages and utilities
 apt-get install -y \
