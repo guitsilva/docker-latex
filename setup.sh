@@ -78,21 +78,9 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
-# Create or update a non-root user to match UID/GID - see https://aka.ms/vscode-remote/containers/non-root-user.
-if id -u $userName > /dev/null 2>&1; then
-    # User exists, update if needed
-    if [ "$userGID" != "$(id -G $userName)" ]; then 
-        groupmod --gid $userGID $userName 
-        usermod --gid $userGID $userName
-    fi
-    if [ "$userUID" != "$(id -u $userName)" ]; then 
-        usermod --uid $userUID $userName
-    fi
-else
-    # Create user
-    groupadd --gid $userGID $userName
-    useradd -s /bin/bash --uid $userUID --gid $userGID -m $userName
-fi
+# Create non-root user
+groupadd --gid $userGID $userName
+useradd --uid $userUID --gid $userGID -m $userName
 
 # Add sudo support for non-root user
 echo $userName ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$userName
