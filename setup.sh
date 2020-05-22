@@ -44,6 +44,9 @@ apt-get install -y \
     cm-super \
     latexmk
 
+# Clean up apt
+rm -rf /var/lib/apt/lists/*
+
 # Generate en_US.UTF-8 and pt_BR.UTF-8 locales
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen
@@ -60,6 +63,3 @@ chmod 0440 /etc/sudoers.d/$userName
 # Create VS Code extensions folder for persistent extensions across containers
 mkdir -p /home/$userName/.vscode-server/extensions
 chown -R $userName /home/$userName/.vscode-server
-
-# Clean up
-rm -rf /var/lib/apt/lists/*
