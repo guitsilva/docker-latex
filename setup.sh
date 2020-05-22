@@ -34,7 +34,7 @@
 set -e
 
 # Define script options and its defaults
-userName=${1:-"$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)"}
+userName=${1:-"vscode"}
 userUID=${2:-1000}
 userGID=${3:-1000}
 installZsh=${4:-"false"}
