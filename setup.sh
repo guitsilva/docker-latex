@@ -29,7 +29,7 @@
 # SOFTWARE
 #-------------------------------------------------------------------------------------------------------------
 
-# Syntax: ./setup.sh <userName> <user UID> <user GID> <install zsh flag> 
+# Syntax: ./setup.sh <userName> <userUID> <userGID>
 
 set -e
 
@@ -37,7 +37,6 @@ set -e
 userName=${1:-"vscode"}
 userUID=${2:-1000}
 userGID=${3:-1000}
-installZsh=${4:-"false"}
 
 # Ensure script execution as root
 if [ "$(id -u)" -ne 0 ]; then
@@ -58,7 +57,8 @@ apt-get -y install --no-install-recommends \
     locales \
     neovim \
     openssh-client \
-    sudo
+    sudo \
+    zsh
 
 # Install selected TeX Live packages and utilities
 apt-get install -y \
@@ -86,24 +86,9 @@ useradd --uid $userUID --gid $userGID -m $userName
 echo $userName ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$userName
 chmod 0440 /etc/sudoers.d/$userName
 
-# Ensure ~/.local/bin is in the PATH for root and non-root users for bash. (zsh is later)
-echo "export PATH=\$PATH:\$HOME/.local/bin" | tee -a /root/.bashrc >> /home/$userName/.bashrc 
-chown $userUID:$userGID /home/$userName/.bashrc
-
 # Create VS Code extensions folder for persistent extensions across containers
 mkdir -p /home/$userName/.vscode-server/extensions
 chown -R $userName /home/$userName/.vscode-server
-
-# Optionally install and configure zsh
-if [ "$installZsh" = "true" ] && [ ! -d "/root/.oh-my-zsh" ]; then 
-    apt-get install -y zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    echo "export PATH=\$PATH:\$HOME/.local/bin" >> /root/.zshrc
-    cp -R /root/.oh-my-zsh /home/$userName
-    cp /root/.zshrc /home/$userName
-    sed -i -e "s/\/root\/.oh-my-zsh/\/home\/$userName\/.oh-my-zsh/g" /home/$userName/.zshrc
-    chown -R $userUID:$userGID /home/$userName/.oh-my-zsh /home/$userName/.zshrc
-fi
 
 # Clean up
 rm -rf /var/lib/apt/lists/*

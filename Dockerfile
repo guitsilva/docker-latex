@@ -11,11 +11,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG userName=vscode
 ARG userUID=1000
 ARG userGID=$userUID
-ARG installZsh="true"
 
 # Copy local setup.sh to container
 COPY setup.sh /tmp/
 
 # Execute and remove setup.sh
-RUN bash /tmp/setup.sh "${userName}" "${userUID}" "${userGID}" "${installZsh}" \
+RUN bash /tmp/setup.sh "${userName}" "${userUID}" "${userGID}" \
     && rm /tmp/setup.sh

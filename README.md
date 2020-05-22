@@ -12,8 +12,6 @@ LaTeX environment within Docker containers based on Ubuntu LTS and non-full TeX 
 
 - persistent VS Code extensions across containers;
 
-- optionally install Zsh and Oh-My-Zsh.
-
 ## Deployment
 
 Built images can be found at [DockerHub](https://hub.docker.com/r/guitsilva/docker-latex). Copy and execute the following command to pull the `latest` (master branch) image:
