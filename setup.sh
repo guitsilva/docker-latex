@@ -41,7 +41,7 @@ installZsh=${4:-"false"}
 
 # Ensure script execution as root
 if [ "$(id -u)" -ne 0 ]; then
-    echo 'Script must be run a root. Use sudo or set "USER root" before running the script.'
+    echo 'Script must be run as root.'
     exit 1
 fi
 
