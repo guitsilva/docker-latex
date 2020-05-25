@@ -30,4 +30,4 @@ We use [SemVer](semver.org) for versioning. For the versions available, see the 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/guitsilva/docker-latex/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/guitsilva/docker-latex/blob/master/LICENSE) file for details.
