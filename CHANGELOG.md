@@ -1,6 +1,19 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org) for commit and versioning guidelines, respectively.
+
+
+## [1.0.0](https://github.com/guitsilva/docker-latex/compare/v0.3.0...v1.0.0) (2020-05-26)
+
+### Features
+
+* **setup:** install recommended packages ([4265116](https://github.com/guitsilva/docker-latex/commit/4265116))
+* **dockerfile:** set container USER and WORKDIR ([23bed3d](https://github.com/guitsilva/docker-latex/commit/23bed3d))
+* **setup:** generate pt_BR.UTF-8 locale ([4e91fea](https://github.com/guitsilva/docker-latex/commit/4e91fea))
+
+### Breaking Changes
+
+* remove Oh-My-Zsh install ([be2a3f1](https://github.com/guitsilva/docker-latex/commit/be2a3f1))
 
 
 ## [0.3.0](https://github.com/guitsilva/docker-latex/compare/v0.2.1...v0.3.0) (2020-05-19)
