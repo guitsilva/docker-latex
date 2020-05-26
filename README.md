@@ -10,7 +10,7 @@ LaTeX environment within Docker containers based on Ubuntu LTS and non-full TeX 
 
 - non-root user to prevent files edited inside the container to be inaccessible to host user;
 
-- persistent VS Code extensions across containers;
+- persistent VS Code extensions across containers.
 
 ## Deployment
 
