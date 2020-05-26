@@ -19,7 +19,7 @@ fi
 apt-get update
 
 # Install general utilities
-apt-get install -y --no-install-recommends \
+apt-get install -y \
     ca-certificates \
     curl \
     git \
