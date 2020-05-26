@@ -8,7 +8,7 @@ LABEL maintainer="Guilherme Tavares da Silva <guilherme.tsilva@gmail.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Set setup.sh arguments 
-ARG userName=vscode
+ARG userName="vscode"
 ARG userUID=1000
 ARG userGID=$userUID
 
@@ -16,5 +16,9 @@ ARG userGID=$userUID
 COPY setup.sh /tmp/
 
 # Execute and remove setup.sh
-RUN bash /tmp/setup.sh "${userName}" "${userUID}" "${userGID}" \
+RUN bash /tmp/setup.sh ${userName} ${userUID} ${userGID} \
     && rm /tmp/setup.sh
+
+# Set container user and workdir
+USER ${userName}
+WORKDIR /home/${userName}

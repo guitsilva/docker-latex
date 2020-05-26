@@ -53,13 +53,13 @@ echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # Create non-root user
-groupadd --gid $userGID $userName
-useradd --uid $userUID --gid $userGID -m $userName
+groupadd --gid ${userGID} ${userName}
+useradd --uid ${userUID} --gid ${userGID} -m ${userName}
 
 # Add sudo support for non-root user
-echo $userName ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$userName
-chmod 0440 /etc/sudoers.d/$userName
+echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName}
+chmod 0440 /etc/sudoers.d/${userName}
 
 # Create VS Code extensions folder for persistent extensions across containers
-mkdir -p /home/$userName/.vscode-server/extensions
-chown -R $userName /home/$userName/.vscode-server
+mkdir -p /home/${userName}/.vscode-server/extensions
+chown -R ${userName} /home/${userName}/.vscode-server
