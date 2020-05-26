@@ -10,9 +10,7 @@ LaTeX environment within Docker containers based on Ubuntu LTS and non-full TeX 
 
 - non-root user to prevent files edited inside the container to be inaccessible to host user;
 
-- persistent VS Code extensions across containers;
-
-- optionally install Zsh and Oh-My-Zsh.
+- persistent VS Code extensions across containers.
 
 ## Deployment
 
@@ -28,8 +26,8 @@ and execute VS Code's command `Remote-Containers: Reopen in Container`.
 
 ## Versioning
 
-We use [SemVer](semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/guitsilva/docker-latex/tags).
+We use [SemVer](semver.org) for versioning. See the [tags on this repository](https://github.com/guitsilva/docker-latex/tags), for the versions available.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/guitsilva/docker-latex/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/guitsilva/docker-latex/blob/master/LICENSE) file for details.
