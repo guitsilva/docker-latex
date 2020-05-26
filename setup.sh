@@ -60,6 +60,7 @@ useradd --uid ${userUID} --gid ${userGID} -m ${userName}
 echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName}
 chmod 0440 /etc/sudoers.d/${userName}
 
-# Create VS Code extensions folder for persistent extensions across containers
+# Create VS Code extensions folder for persistecy across containers ---
+# see .devcontainer.json for a configuration example
 mkdir -p /home/${userName}/.vscode-server/extensions
 chown -R ${userName} /home/${userName}/.vscode-server
