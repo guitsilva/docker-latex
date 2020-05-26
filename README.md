@@ -26,7 +26,7 @@ and execute VS Code's command `Remote-Containers: Reopen in Container`.
 
 ## Versioning
 
-We use [SemVer](semver.org) for versioning. For the versions available, see the [tags on this repository](https://github.com/guitsilva/docker-latex/tags).
+We use [SemVer](semver.org) for versioning. See the [tags on this repository](https://github.com/guitsilva/docker-latex/tags), for the versions available.
 
 ## License
 
