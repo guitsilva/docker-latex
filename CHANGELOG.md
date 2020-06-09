@@ -5,7 +5,7 @@ All notable changes to this project is documented in this file. See
 for commit and versioning guidelines, respectively.
 
 
-## [1.0.0](https://github.com/guitsilva/docker-latex/compare/v0.3.0...v1.0.0) (2020-05-26)
+## [Release 1.0.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.0.0) (2020-05-26)
 
 ### New Features
 
@@ -22,7 +22,7 @@ for commit and versioning guidelines, respectively.
   ([be2a3f1](https://github.com/guitsilva/docker-latex/commit/be2a3f1))
 
 
-## [0.3.0](https://github.com/guitsilva/docker-latex/compare/v0.2.1...v0.3.0) (2020-05-19)
+## [Release 0.3.0](https://github.com/guitsilva/docker-latex/releases/tag/v0.3.0) (2020-05-19)
 
 ### New Features
 
@@ -30,7 +30,7 @@ for commit and versioning guidelines, respectively.
   ([3455fd4](https://github.com/guitsilva/docker-latex/commit/3455fd4))
 
 
-## [0.2.1](https://github.com/guitsilva/docker-latex/compare/v0.1.0...v0.2.1) (2020-05-18)
+## [Release 0.2.1](https://github.com/guitsilva/docker-latex/releases/tag/v0.2.1) (2020-05-18)
 
 ### Bug Fixes
 
@@ -44,7 +44,7 @@ for commit and versioning guidelines, respectively.
   ([c49afb7](https://github.com/guitsilva/docker-latex/commit/c49afb7))
 
 
-## 0.1.0 (2020-05-14)
+## [Release 0.1.0](https://github.com/guitsilva/docker-latex/releases/tag/v0.1.0) (2020-05-14)
 
 ### New Features
 
