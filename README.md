@@ -38,6 +38,19 @@ extension, copy the `devcontainer.json` file into your LaTeX project folder
 
 and execute VS Code's command `Remote-Containers: Reopen in Container`.
 
+## Workflow
+
+We strictly use
+[Gitflow](https://nvie.com/posts/a-successful-git-branching-model/). See also
+[Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
+for commit and versioning guidelines, respectively.
+
+## Changelog
+
+All notable changes to this project is documented in the
+[CHANGELOG.md](https://github.com/guitsilva/docker-latex/blob/master/CHANGELOG.md)
+file.
+
 ## License
 
 This project is licensed under the MIT License - see the
