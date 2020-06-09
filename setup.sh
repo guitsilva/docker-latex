@@ -20,14 +20,8 @@ apt-get update
 
 # Install general utilities
 apt-get install -y \
-    ca-certificates \
-    curl \
-    git \
-    gnupg \
-    less \
     locales \
     neovim \
-    openssh-client \
     sudo \
     zsh
 
