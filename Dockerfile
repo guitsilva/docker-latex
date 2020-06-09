@@ -1,5 +1,5 @@
 # Define base image: Ubuntu LTS
-FROM ubuntu
+FROM buildpack-deps:focal
 
 # Define maintainer
 LABEL maintainer="Guilherme Tavares da Silva <guilherme.tsilva@gmail.com>"
