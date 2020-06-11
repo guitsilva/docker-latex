@@ -48,7 +48,7 @@ locale-gen
 
 # Create non-root user
 groupadd --gid ${userGID} ${userName}
-useradd --uid ${userUID} --gid ${userGID} -m ${userName}
+useradd --uid ${userUID} --gid ${userGID} --shell $(which zsh) -m ${userName}
 
 # Add sudo support for non-root user
 echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName}
