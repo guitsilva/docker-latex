@@ -22,3 +22,6 @@ RUN bash /tmp/setup.sh ${userName} ${userUID} ${userGID} \
 # Set container user and workdir
 USER ${userName}
 WORKDIR /home/${userName}
+
+# Set default command
+CMD ["zsh"]
