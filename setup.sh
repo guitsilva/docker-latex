@@ -48,13 +48,14 @@ locale-gen
 
 # Create non-root user
 groupadd --gid ${userGID} ${userName}
-useradd --uid ${userUID} --gid ${userGID} -m ${userName}
+useradd --uid ${userUID} --gid ${userGID} \
+    --shell $(which zsh) --create-home ${userName}
 
 # Add sudo support for non-root user
 echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName}
 chmod 0440 /etc/sudoers.d/${userName}
 
-# Create VS Code extensions folder for persistecy across containers ---
-# see .devcontainer.json for a configuration example
+# Create VS Code extensions folder for persistecy across containers --- see
+# .devcontainer.json for a configuration example
 mkdir -p /home/${userName}/.vscode-server/extensions
 chown -R ${userName} /home/${userName}/.vscode-server
