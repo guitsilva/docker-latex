@@ -1,4 +1,4 @@
-# Define base image: Ubuntu LTS
+# Define base image
 FROM buildpack-deps:focal
 
 # Define maintainer
@@ -7,7 +7,7 @@ LABEL maintainer="Guilherme Tavares da Silva <guilherme.tsilva@gmail.com>"
 # Set noninteractive mode
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Set setup.sh arguments 
+# Set non-root user info
 ARG userName="vscode"
 ARG userUID=1000
 ARG userGID=$userUID
@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     #
     rm -rf /var/lib/apt/lists/*
 
-# Install selected TeX Live packages and utilities
+# Install selected TeX Live packages
 RUN apt-get update && apt-get install -y \
     texlive \
     texlive-science \
@@ -50,11 +50,11 @@ RUN groupadd --gid ${userGID} ${userName} && \
 RUN echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName} && \
     chmod 0440 /etc/sudoers.d/${userName}
 
-# Create VS Code extensions folder for persistecy
+# Create VS Code extensions folder for persistency
 RUN mkdir -p /home/${userName}/.vscode-server/extensions && \
     chown -R ${userName} /home/${userName}/.vscode-server
 
-# Set container user and workdir
+# Set default user and workdir
 USER ${userName}
 WORKDIR /home/${userName}
 
