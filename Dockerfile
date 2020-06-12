@@ -10,7 +10,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Set non-root user info
 ARG userName="vscode"
 ARG userUID=1000
-ARG userGID=$userUID
+ARG userGID=${userUID}
 
 # Install general utilities
 RUN apt-get update && apt-get install -y \
