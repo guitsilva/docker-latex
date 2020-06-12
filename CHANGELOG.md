@@ -5,6 +5,18 @@ All notable changes to this project is documented in this file. See
 for commit and versioning guidelines, respectively.
 
 
+# [Release 1.3.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.3.0) (2020-06-12)
+
+### New Features
+
+* **dockerfile:** set container default CMD
+  ([b40848f](https://github.com/guitsilva/docker-latex/commit/b40848f))
+* **setup:** set zsh as default shell for non-root user
+  ([2d3ea4c](https://github.com/guitsilva/docker-latex/commit/2d3ea4c))
+* **dockerfile:** change base image from ubuntu to buildpack-deps:focal
+  ([e5fd707](https://github.com/guitsilva/docker-latex/commit/e5fd707))
+
+
 ## [Release 1.0.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.0.0) (2020-05-26)
 
 ### New Features
