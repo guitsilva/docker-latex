@@ -4,7 +4,16 @@ All notable changes to this project is documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
 for commit and versioning guidelines, respectively.
 
-# [Release 1.3.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.3.0) (2020-06-12)
+## [Release 1.5.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.5.0) (2020-07-06)
+
+### New Features
+
+- add direnv package to general utilities
+  ([f2625ab](https://github.com/guitsilva/docker-latex/commit/f2625ab))
+- create non-root user's private bin folder
+  ([c4219bd](https://github.com/guitsilva/docker-latex/commit/c4219bd))
+
+## [Release 1.3.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.3.0) (2020-06-12)
 
 ### New Features
 
