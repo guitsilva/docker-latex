@@ -14,6 +14,7 @@ ARG userGID=${userUID}
 
 # Install general utilities
 RUN apt-get update && apt-get install -y \
+    direnv \
     locales \
     neovim \
     sudo \
@@ -49,6 +50,13 @@ RUN groupadd --gid ${userGID} ${userName} && \
 # Add sudo support for non-root user
 RUN echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName} && \
     chmod 0440 /etc/sudoers.d/${userName}
+
+# Create non-root user's private bin folder
+RUN [ ! -d /home/${userName}/.local/bin ] && \
+    mkdir -p /home/${userName}/.local/bin
+
+# Add non-root user's private bin folder to PATH
+ENV PATH="/home/${userName}/.local/bin:${PATH}"
 
 # Create VS Code extensions folder for persistency
 RUN mkdir -p /home/${userName}/.vscode-server/extensions && \
