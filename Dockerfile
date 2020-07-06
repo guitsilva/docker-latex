@@ -14,6 +14,7 @@ ARG userGID=${userUID}
 
 # Install general utilities
 RUN apt-get update && apt-get install -y \
+    direnv \
     locales \
     neovim \
     sudo \
