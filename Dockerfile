@@ -54,14 +54,15 @@ RUN echo "${userName} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${userName} && \
 
 # Create non-root user's private bin folder
 RUN [ ! -d /home/${userName}/.local/bin ] && \
-    mkdir -p /home/${userName}/.local/bin
+    mkdir -p /home/${userName}/.local/bin && \
+    chown -R ${userName}:${userName} /home/${userName}/.local
 
 # Add non-root user's private bin folder to PATH
 ENV PATH="/home/${userName}/.local/bin:${PATH}"
 
 # Create VS Code extensions folder for persistency
 RUN mkdir -p /home/${userName}/.vscode-server/extensions && \
-    chown -R ${userName} /home/${userName}/.vscode-server
+    chown -R ${userName}:${userName} /home/${userName}/.vscode-server
 
 # Set default user and workdir
 USER ${userName}
