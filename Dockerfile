@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
     texlive \
     texlive-science \
     texlive-publishers \
+    texlive-extra-utils \
     texlive-bibtex-extra \
     texlive-fonts-extra \
     texlive-latex-extra \
