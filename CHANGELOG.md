@@ -4,6 +4,13 @@ All notable changes to this project is documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
 for commit and versioning guidelines, respectively.
 
+## [Release 1.6.1](https://github.com/guitsilva/docker-latex/releases/tag/v1.6.1) (2020-07-07)
+
+### Bug Fixes
+
+- give back non-root user access to .local folder after .local/bin creation
+  ([493002d](https://github.com/guitsilva/docker-latex/commit/493002d))
+
 ## [Release 1.6.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.6.0) (2020-07-07)
 
 ### New Features
