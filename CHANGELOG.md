@@ -4,6 +4,13 @@ All notable changes to this project is documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
 for commit and versioning guidelines, respectively.
 
+## [Release 1.6.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.6.0) (2020-07-07)
+
+### New Features
+
+- add texlive-extra-utils package
+  ([e6875a0](https://github.com/guitsilva/docker-latex/commit/e6875a0))
+
 ## [Release 1.5.0](https://github.com/guitsilva/docker-latex/releases/tag/v1.5.0) (2020-07-06)
 
 ### New Features
