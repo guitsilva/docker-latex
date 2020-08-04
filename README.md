@@ -42,7 +42,7 @@ and execute VS Code's command `Remote-Containers: Reopen in Container`.
 
 We strictly use
 [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/). See also
-[Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
+[Conventional Commits](https://conventionalcommits.org) and [SemVer](https://semver.org/)
 for commit and versioning guidelines, respectively.
 
 ## Changelog

@@ -1,7 +1,7 @@
 # Changelog
 
 All notable changes to this project is documented in this file. See
-[Conventional Commits](https://conventionalcommits.org) and [SemVer](semver.org)
+[Conventional Commits](https://conventionalcommits.org) and [SemVer](https://semver.org/)
 for commit and versioning guidelines, respectively.
 
 ## [Release 1.6.1](https://github.com/guitsilva/docker-latex/releases/tag/v1.6.1) (2020-07-07)
